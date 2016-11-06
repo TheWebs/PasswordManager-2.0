@@ -4,6 +4,7 @@ Simple program to store accounts. It has shitty secutiry as it only converts the
 # Commands
 * list accounts
 * add account
+* delete account
 * exit
 
 # Updates
