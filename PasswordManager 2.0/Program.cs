@@ -46,7 +46,7 @@ namespace PasswordManager_2._0
                         Console.ReadKey();
                         break;
 
-                    case "update":
+                    /*case "update":
                         foreach(Account conta4 in load(caminho).contas)
                         {
                             Account temp = new Account { };
@@ -58,7 +58,7 @@ namespace PasswordManager_2._0
                             temp.password = pass;
                             save(temp);
                         }
-                        break;
+                        break;*/
 
                     case "list accounts":
                         Console.Clear();
@@ -94,6 +94,39 @@ namespace PasswordManager_2._0
                         if (encontrou == true) { break; }
                         else
                         {
+                            Console.Clear();
+                            Console.WriteLine("Conta nao encontrada, verifique se escreveu bem!");
+                            Console.ReadKey();
+                            break;
+                        }
+
+                    case "delete account":
+                        Console.Clear();
+                        ListaContas tempo = new ListaContas { };
+                        Console.Write("Nome da conta: ");
+                        string nome3 = Console.ReadLine();
+                        bool encontrou2 = false;
+                        foreach (Account conta5 in load(caminho).contas)
+                        {
+                            if (encriptaB64(nome3) == conta5.username)
+                            {
+                                encontrou2 = true;
+                                Console.Clear();
+                                Console.WriteLine("Conta " + nome3 + " apagada com sucesso!");
+                                Console.ReadKey();
+                            }
+                            else
+                            {
+                                tempo.contas.Add(conta5);
+
+                            }
+
+                        }
+
+                        if (encontrou2 == true) { File.WriteAllText(caminho, Newtonsoft.Json.JsonConvert.SerializeObject(tempo)); break; }
+                        else
+                        {
+
                             Console.Clear();
                             Console.WriteLine("Conta nao encontrada, verifique se escreveu bem!");
                             Console.ReadKey();
